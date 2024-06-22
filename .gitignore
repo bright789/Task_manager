@@ -1,0 +1,11 @@
+# Python
+*.pyc
+__pycache__/
+
+# Environment
+.venv
+.env
+
+# Node
+node_modules/
+build/
