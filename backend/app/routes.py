@@ -47,3 +47,27 @@ def add_task():
     print("Task added:", new_task.to_dict())  # Log added task
 
     return jsonify(new_task.to_dict()), 201
+
+@main.route('/api/tasks/<int:task_id>', methods=['PUT'])
+@jwt_required()
+def edit_task(task_id):
+    user_id = get_jwt_identity()
+    task = Task.query.filter_by(id=task_id, user_id=user_id).first_or_404()
+    data = request.get_json()
+
+    task.title = data.get('title', task.title)
+    task.description = data.get('description', task.description)
+    task.due_date = datetime.strptime(data['due_date'], '%Y-%m-%d').date() if 'due_date' in data else task.due_date
+    task.completed = data.get('completed', task.completed)
+
+    db.session.commit()
+    return jsonify(task.to_dict()), 200
+
+@main.route('/api/tasks/<int:task_id>', methods=['DELETE'])
+@jwt_required()
+def delete_task(task_id):
+    user_id = get_jwt_identity()
+    task = Task.query.filter_by(id=task_id, user_id=user_id).first_or_404()
+    db.session.delete(task)
+    db.session.commit()
+    return jsonify({"message": "Task deleted successfully"}), 200
