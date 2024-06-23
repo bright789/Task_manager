@@ -1,4 +1,3 @@
-// src/components/Register.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -19,11 +18,17 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-3">
       <h2>Register</h2>
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleRegister}>Register</button>
+      <div className="mb-3">
+        <label htmlFor="registerEmail" className="form-label">Email:</label>
+        <input type="email" id="registerEmail" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="registerPassword" className="form-label">Password:</label>
+        <input type="password" id="registerPassword" className="form-control" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      </div>
+      <button onClick={handleRegister} className="btn btn-primary">Register</button>
     </div>
   );
 };

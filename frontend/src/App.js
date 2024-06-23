@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import Register from './components/Register';
 import Login from './components/Login';
@@ -9,10 +8,16 @@ const App = () => {
   const token = useSelector((state) => state.auth.token);
 
   return (
-    <div>
-      <h1>Task Manager</h1>
-      <Register />
-      <Login />
+    <div className="container mt-3">
+      <h1 className="text-center">Task Manager</h1>
+      <div className="row">
+        <div className="col-md-6">
+          <Register />
+        </div>
+        <div className="col-md-6">
+          <Login />
+        </div>
+      </div>
       {token && <Tasks />}
     </div>
   );

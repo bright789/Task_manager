@@ -1,4 +1,3 @@
-// src/redux/store.js
 import { createStore, combineReducers } from 'redux';
 import authReducer from './authReducer';
 import tasksReducer from './tasksReducer';

@@ -1,4 +1,3 @@
-// src/redux/tasksReducer.js
 const initialState = {
     tasks: [],
   };

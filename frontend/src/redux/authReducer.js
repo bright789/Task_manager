@@ -1,4 +1,3 @@
-// src/redux/authReducer.js
 const initialState = {
     token: null,
   };

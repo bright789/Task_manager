@@ -1,4 +1,3 @@
-// src/components/Login.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -22,11 +21,17 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-3">
       <h2>Login</h2>
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleLogin}>Login</button>
+      <div className="mb-3">
+        <label htmlFor="loginEmail" className="form-label">Email:</label>
+        <input type="email" id="loginEmail" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="loginPassword" className="form-label">Password:</label>
+        <input type="password" id="loginPassword" className="form-control" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      </div>
+      <button onClick={handleLogin} className="btn btn-primary">Login</button>
     </div>
   );
 };

@@ -1,4 +1,3 @@
-// src/components/Tasks.js
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -29,11 +28,15 @@ const Tasks = () => {
   }, [token, dispatch]);
 
   return (
-    <div>
+    <div className="container mt-3">
       <h2>Tasks</h2>
-      <ul>
+      <ul className="list-group">
         {tasks.map((task) => (
-          <li key={task.id}>{task.title}</li>
+          <li key={task.id} className="list-group-item">
+            <h5>{task.title}</h5>
+            <p>{task.description}</p>
+            <p>Due: {task.due_date}</p>
+          </li>
         ))}
       </ul>
     </div>
