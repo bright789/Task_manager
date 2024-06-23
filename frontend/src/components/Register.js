@@ -4,8 +4,14 @@ import axios from 'axios';
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleRegister = async () => {
+    if (!email || !password) {
+      setError('Email and Password are required');
+      return;
+    }
+
     try {
       const response = await axios.post('http://127.0.0.1:5000/api/register', {
         email,
@@ -20,6 +26,7 @@ const Register = () => {
   return (
     <div className="container mt-3">
       <h2>Register</h2>
+      {error && <div className="alert alert-danger">{error}</div>}
       <div className="mb-3">
         <label htmlFor="registerEmail" className="form-label">Email:</label>
         <input type="email" id="registerEmail" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
