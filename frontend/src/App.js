@@ -4,6 +4,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Tasks from './components/Tasks';
 import { useSelector } from 'react-redux';
+import './style.css';
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);

@@ -1,3 +1,4 @@
+// src/components/Tasks.js
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -57,31 +58,33 @@ const Tasks = () => {
   };
 
   return (
-    <div className="container mt-3">
-      <h2>Tasks</h2>
-      {error && <div className="alert alert-danger">{error}</div>}
-      <div className="mb-3">
-        <label htmlFor="taskTitle" className="form-label">Title:</label>
-        <input type="text" id="taskTitle" className="form-control" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+    <div className="card mt-3">
+      <div className="card-body">
+        <h5 className="card-title">Tasks</h5>
+        {error && <div className="alert alert-danger">{error}</div>}
+        <div className="mb-3">
+          <label htmlFor="taskTitle" className="form-label">Title:</label>
+          <input type="text" id="taskTitle" className="form-control" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="taskDescription" className="form-label">Description:</label>
+          <textarea id="taskDescription" className="form-control" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="taskDueDate" className="form-label">Due Date:</label>
+          <input type="date" id="taskDueDate" className="form-control" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+        </div>
+        <button onClick={handleAddTask} className="btn btn-primary mb-3">Add Task</button>
+        <ul className="list-group">
+          {tasks.map((task) => (
+            <li key={task.id} className="list-group-item">
+              <h5>{task.title}</h5>
+              <p>{task.description}</p>
+              <p>Due: {task.due_date}</p>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div className="mb-3">
-        <label htmlFor="taskDescription" className="form-label">Description:</label>
-        <textarea id="taskDescription" className="form-control" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-      </div>
-      <div className="mb-3">
-        <label htmlFor="taskDueDate" className="form-label">Due Date:</label>
-        <input type="date" id="taskDueDate" className="form-control" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
-      </div>
-      <button onClick={handleAddTask} className="btn btn-primary mb-3">Add Task</button>
-      <ul className="list-group">
-        {tasks.map((task) => (
-          <li key={task.id} className="list-group-item">
-            <h5>{task.title}</h5>
-            <p>{task.description}</p>
-            <p>Due: {task.due_date}</p>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 };
