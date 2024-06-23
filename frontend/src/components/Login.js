@@ -1,32 +1,33 @@
+// src/components/Login.js
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { setToken } from '../redux/actions';
 
-const Login = ({ setToken }) => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleLogin = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:5000/api/login', { email, password });
-      setToken(response.data.token);
+      const response = await axios.post('http://127.0.0.1:5000/api/login', {
+        email,
+        password,
+      });
+      dispatch(setToken(response.data.token));
     } catch (error) {
-      console.error(error.response.data);
+      alert(error.response.data.message);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Email:</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-      </div>
-      <button type="submit">Login</button>
-    </form>
+    <div>
+      <h2>Login</h2>
+      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <button onClick={handleLogin}>Login</button>
+    </div>
   );
 };
 
