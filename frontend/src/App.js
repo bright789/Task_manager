@@ -1,15 +1,23 @@
-import React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppRouter from './AppRouter';
-import theme from './theme';
+import React, { useState } from 'react';
+import Register from './components/Register';
+import Login from './components/Login';
+import Tasks from './components/Tasks';
 
 const App = () => {
+  const [token, setToken] = useState(null);
+
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <AppRouter />
-    </ThemeProvider>
+    <div>
+      <h1>Task Manager</h1>
+      {!token ? (
+        <>
+          <Register />
+          <Login setToken={setToken} />
+        </>
+      ) : (
+        <Tasks token={token} />
+      )}
+    </div>
   );
 };
 
