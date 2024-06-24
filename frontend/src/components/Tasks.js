@@ -1,4 +1,3 @@
-// src/components/Tasks.js
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -106,15 +105,34 @@ const Tasks = () => {
         {error && <div className="alert alert-danger">{error}</div>}
         <div className="mb-3">
           <label htmlFor="taskTitle" className="form-label">Title:</label>
-          <input type="text" id="taskTitle" className="form-control" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+          <input
+            type="text"
+            id="taskTitle"
+            className="form-control"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </div>
         <div className="mb-3">
           <label htmlFor="taskDescription" className="form-label">Description:</label>
-          <textarea id="taskDescription" className="form-control" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+          <textarea
+            id="taskDescription"
+            className="form-control"
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          ></textarea>
         </div>
         <div className="mb-3">
           <label htmlFor="taskDueDate" className="form-label">Due Date:</label>
-          <input type="date" id="taskDueDate" className="form-control" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+          <input
+            type="date"
+            id="taskDueDate"
+            className="form-control"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+          />
         </div>
         {editingTask ? (
           <button onClick={handleSaveEdit} className="btn btn-primary mb-3">Save Edit</button>

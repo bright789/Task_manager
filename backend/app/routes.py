@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from . import db
-from .models import Task
+from .models import Task, User
 from datetime import datetime
 
 main = Blueprint('main', __name__)
@@ -71,3 +71,16 @@ def delete_task(task_id):
     db.session.delete(task)
     db.session.commit()
     return jsonify({"message": "Task deleted successfully"}), 200
+
+# Admin routes
+@main.route('/api/admin/users', methods=['GET'])
+@jwt_required()
+def get_all_users():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    if not user.is_admin:
+        return jsonify({"msg": "Admin access required"}), 403
+
+    users = User.query.all()
+    users_list = [u.to_dict() for u in users]
+    return jsonify(users_list), 200

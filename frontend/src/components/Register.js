@@ -17,6 +17,7 @@ const Register = () => {
       const response = await axios.post('http://127.0.0.1:5000/api/register', {
         email,
         password,
+        //is_admin: isAdmin, // Include is_admin field for testing purposes
       });
       alert(response.data.message);
     } catch (error) {
