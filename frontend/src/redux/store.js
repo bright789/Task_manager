@@ -20,7 +20,7 @@ const store = createStore(
 
 // Load token from localStorage/sessionStorage
 const token = localStorage.getItem('token');
-// const token = sessionStorage.getItem('token'); // Uncomment if using sessionStorage
+//const token = sessionStorage.getItem('token'); // Uncomment if using sessionStorage
 
 if (token) {
   store.dispatch(setToken(token));

@@ -84,3 +84,52 @@ def get_all_users():
     users = User.query.all()
     users_list = [u.to_dict() for u in users]
     return jsonify(users_list), 200
+
+@main.route('/api/admin/users/<int:user_id>', methods=['DELETE'])
+@jwt_required()
+def delete_user(user_id):
+    admin_id = get_jwt_identity()
+    admin = User.query.get(admin_id)
+    if not admin.is_admin:
+        return jsonify({"msg": "Admin access required"}), 403
+
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"msg": "User not found"}), 404
+
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({"message": "User deleted successfully"}), 200
+
+@main.route('/api/admin/assign_task', methods=['POST'])
+@jwt_required()
+def assign_task():
+    admin_id = get_jwt_identity()
+    admin = User.query.get(admin_id)
+    if not admin.is_admin:
+        return jsonify({"msg": "Admin access required"}), 403
+
+    data = request.get_json()
+    user_id = data.get('user_id')
+    title = data.get('title')
+    description = data.get('description', '')
+    due_date_str = data.get('due_date')
+
+    if not user_id or not title:
+        return jsonify({"msg": "User ID and Title are required"}), 400
+
+    if due_date_str:
+        due_date = datetime.strptime(due_date_str, '%Y-%m-%d').date()
+    else:
+        due_date = None
+
+    new_task = Task(
+        title=title,
+        description=description,
+        due_date=due_date,
+        user_id=user_id
+    )
+    db.session.add(new_task)
+    db.session.commit()
+
+    return jsonify(new_task.to_dict()), 201

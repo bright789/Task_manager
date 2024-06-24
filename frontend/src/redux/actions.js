@@ -36,7 +36,7 @@ export const login = (email, password) => async (dispatch) => {
 
     // Store the token in localStorage/sessionStorage
     localStorage.setItem('token', token);
-    // sessionStorage.setItem('token', token); // Uncomment if using sessionStorage
+    sessionStorage.setItem('token', token); // Uncomment if using sessionStorage
 
     dispatch(setToken(token));
 
