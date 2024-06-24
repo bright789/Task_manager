@@ -2,6 +2,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Logout from './Logout';
 
 const Navigation = () => {
   const token = useSelector((state) => state.auth.token);
@@ -40,6 +41,9 @@ const Navigation = () => {
                     <Link className="nav-link" to="/admin">Admin</Link>
                   </li>
                 )}
+                <li className="nav-item">
+                  <Logout />
+                </li>
               </>
             )}
           </ul>

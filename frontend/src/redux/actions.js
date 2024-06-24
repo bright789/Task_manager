@@ -33,6 +33,11 @@ export const login = (email, password) => async (dispatch) => {
     });
     const token = response.data.token;
     console.log('JWT Token:', token);  // Log the token
+
+    // Store the token in localStorage/sessionStorage
+    localStorage.setItem('token', token);
+    // sessionStorage.setItem('token', token); // Uncomment if using sessionStorage
+
     dispatch(setToken(token));
 
     // Fetch user details to check if admin
@@ -49,3 +54,15 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
+
+
+export const logout = () => (dispatch) => {
+  // Remove the token from localStorage/sessionStorage
+  localStorage.removeItem('token');
+  sessionStorage.removeItem('token'); // In case you're using sessionStorage
+
+  // Dispatch actions to clear the state
+  dispatch(setToken(null));
+  dispatch(setAdmin(false));
+  dispatch(setTasks([])); // Clear tasks or any other state if needed
+};

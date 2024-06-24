@@ -1,7 +1,7 @@
+// src/components/Login.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import axios from 'axios';
-import { setToken } from '../redux/actions';
+import { login } from '../redux/actions';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -18,15 +18,10 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post('http://127.0.0.1:5000/api/login', {
-        email,
-        password,
-        //is_admin: isAdmin,
-      });
-      dispatch(setToken(response.data.token));
+      await dispatch(login(email, password));
       setError('');
     } catch (error) {
-      setError(error.response.data.message);
+      setError(error.response?.data?.message || 'Error logging in');
     }
   };
 
