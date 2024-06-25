@@ -1,6 +1,6 @@
 # Task Management System
 
-![image](https://github.com/bright789/Task_manager/assets/22407572/6d2e4ce5-b6af-4219-998f-c61d8e072ef2)
+![image](https://github.com/bright789/Task_manager/assets/22407572/43aba94d-628a-4d1c-ad19-119438b29801)
 
 A web-based Task Management System built using Flask for the backend and React for the frontend. This system allows users to register, log in, and manage their tasks.
 
@@ -93,31 +93,47 @@ Before you begin, ensure you have met the following requirements:
 
 ## Usage
 
-1. Open your web browser and navigate to `http://localhost:3000`.
+1. Open your web browser and navigate to `http://localhost:5000`.
 2. Register a new account or log in with an existing account.
 3. Manage your tasks by creating, viewing, and updating them.
 
 ## Project Structure
 
 ```sh
-task-management-system/
+Task_manager/
 ├── backend/
-│   ├── .venv/
-│   ├── app/
-│   │   ├── __init__.py
-│   │   ├── models.py
-│   │   ├── routes.py
-│   ├── migrations/
+│   ├── .dockerignore
 │   ├── .env
+│   ├── delete_users.py
+│   ├── Dockerfile
 │   ├── requirements.txt
 │   ├── run.py
+│   └── app/
+│       ├── __init__.py
+│       ├── routes.py
+│       ├── models.py
+│       └── config.py
 ├── frontend/
-│   ├── node_modules/
 │   ├── public/
+│   │   ├── index.html
+│   │   └── ...
 │   ├── src/
 │   │   ├── components/
-│   │   ├── redux/
+│   │   │   ├── Register.js
+│   │   │   ├── Login.js
+│   │   │   ├── Dashboard.js
+│   │   │   └── ...
+│   │   ├── App.css
 │   │   ├── App.js
+│   │   ├── index.css
 │   │   ├── index.js
-│   ├── .env
+│   │   └── ...
+│   ├── Dockerfile
 │   ├── package.json
+│   └── ...
+├── .gitignore
+├── docker-compose.yml
+├── project_structure.txt
+├── README.md
+└── api_tests.py
+
