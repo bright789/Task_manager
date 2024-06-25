@@ -93,31 +93,47 @@ Before you begin, ensure you have met the following requirements:
 
 ## Usage
 
-1. Open your web browser and navigate to `http://localhost:3000`.
+1. Open your web browser and navigate to `http://localhost:5000`.
 2. Register a new account or log in with an existing account.
 3. Manage your tasks by creating, viewing, and updating them.
 
 ## Project Structure
 
 ```sh
-task-management-system/
+Task_manager/
 ├── backend/
-│   ├── .venv/
-│   ├── app/
-│   │   ├── __init__.py
-│   │   ├── models.py
-│   │   ├── routes.py
-│   ├── migrations/
+│   ├── .dockerignore
 │   ├── .env
+│   ├── delete_users.py
+│   ├── Dockerfile
 │   ├── requirements.txt
 │   ├── run.py
+│   └── app/
+│       ├── __init__.py
+│       ├── routes.py
+│       ├── models.py
+│       └── config.py
 ├── frontend/
-│   ├── node_modules/
 │   ├── public/
+│   │   ├── index.html
+│   │   └── ...
 │   ├── src/
 │   │   ├── components/
-│   │   ├── redux/
+│   │   │   ├── Register.js
+│   │   │   ├── Login.js
+│   │   │   ├── Dashboard.js
+│   │   │   └── ...
+│   │   ├── App.css
 │   │   ├── App.js
+│   │   ├── index.css
 │   │   ├── index.js
-│   ├── .env
+│   │   └── ...
+│   ├── Dockerfile
 │   ├── package.json
+│   └── ...
+├── .gitignore
+├── docker-compose.yml
+├── project_structure.txt
+├── README.md
+└── api_tests.py
+
