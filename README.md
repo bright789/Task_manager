@@ -1,6 +1,6 @@
 # Task Management System
 
-![image](https://github.com/bright789/Task_manager/assets/22407572/6d2e4ce5-b6af-4219-998f-c61d8e072ef2)
+![image](https://github.com/bright789/Task_manager/assets/22407572/43aba94d-628a-4d1c-ad19-119438b29801)
 
 A web-based Task Management System built using Flask for the backend and React for the frontend. This system allows users to register, log in, and manage their tasks.
 
