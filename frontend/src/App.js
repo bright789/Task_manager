@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Tasks from './components/Tasks';
 import Admin from './components/Admin';
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -30,13 +31,16 @@ const App = () => {
 
   return (
     <Router>
-      <div>
+      <div className="d-flex flex-column min-vh-100">
         <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/tasks" element={<Tasks />} />
-          {isAdmin && <Route path="/admin" element={<Admin />} />}
-        </Routes>
+        <main className="flex-fill">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/tasks" element={<Tasks />} />
+            {isAdmin && <Route path="/admin" element={<Admin />} />}
+          </Routes>
+        </main>
+        <Footer />
       </div>
     </Router>
   );
