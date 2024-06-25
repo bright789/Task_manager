@@ -10,6 +10,7 @@ C:.
 ÃÄÄÄbackend
 ³   ³   .dockerignore
 ³   ³   .env
+³   ³   delete_users.py
 ³   ³   Dockerfile
 ³   ³   requirements.txt
 ³   ³   run.py
@@ -3604,14 +3605,29 @@ C:.
     ³   README.md
     ³   
     ÃÄÄÄbuild
-    ³       favicon.ico
-    ³       logo192.png
-    ³       logo512.png
-    ³       manifest.json
-    ³       robots.txt
-    ³       To-Do-Task-Management-App-Template-1-1.jpeg
-    ³       _redirects
-    ³       
+    ³   ³   1920x1080.jpg
+    ³   ³   asset-manifest.json
+    ³   ³   favicon.ico
+    ³   ³   index.html
+    ³   ³   logo192.png
+    ³   ³   logo512.png
+    ³   ³   manifest.json
+    ³   ³   robots.txt
+    ³   ³   _redirects
+    ³   ³   
+    ³   ÀÄÄÄstatic
+    ³       ÃÄÄÄcss
+    ³       ³       main.1a44d8e0.css
+    ³       ³       main.1a44d8e0.css.map
+    ³       ³       
+    ³       ÃÄÄÄjs
+    ³       ³       main.8b447dd8.js
+    ³       ³       main.8b447dd8.js.LICENSE.txt
+    ³       ³       main.8b447dd8.js.map
+    ³       ³       
+    ³       ÀÄÄÄmedia
+    ³               1920x1080.939e08fa8308d5c76326.jpg
+    ³               
     ÃÄÄÄnode_modules
     ³   ³   .package-lock.json
     ³   ³   
@@ -3781,6 +3797,7 @@ C:.
     ³   ³           09de55aa874c7db26718cfea69b4c53e28ea96f03ee47c6f9aa0fbc954204359.json
     ³   ³           0c0f28d94f0c2c8d163dd7b83814c443edd4af8cc4c0f8f48c3a8e99db00c376.json
     ³   ³           0eb1c8c3ace1edf046e161bd04c8eda5505f0b91737065ee62c2d9a8cf14cb5e.json
+    ³   ³           134ced6eca7fd550133a052e2e5b57844149f9a41b4ed4ba1a8901918a4699e5.json
     ³   ³           135fdc6bbfa1e3ebaeddd15b291d8b4ff263b2978ac9302dc65c3b27b178853a.json
     ³   ³           1377565b8eed8aaca409a17fe3ff9bf4e2611512730eae31c00d6a409bb18550.json
     ³   ³           13befd42b7387af74e95b9a022fde29177a14dd56d40b52cebff9d3cf62f991a.json
@@ -3884,6 +3901,7 @@ C:.
     ³   ³           d504c33afe331abebdd6c857d3c0a50938cff706a007f93ef9af57ed3dcd1328.json
     ³   ³           d56d882c0701bad79d63965c0512a137e0a3860d45f146735b68d6a4f4d1e5f0.json
     ³   ³           d5ff25ba12eb928a6a17dac5b26565ac1464037152e61d7e3ce2e50d647ea545.json
+    ³   ³           d673e9648d9e3d62df95d0113c75d4f18c9f8466280f133bab1aea0ba1f05102.json
     ³   ³           d8bd1e89c9a658f2f6453be185d9ce60b76b5903a83307cf73cb49292833083d.json
     ³   ³           d9f11ca31ab7cb2b94cda976f9486696402dd37ae67d9b745b00c569470f9cb1.json
     ³   ³           da6a68a8e1d8992895c6c8d7427f2ea1c2330fa87c5f316f214fa3886de49b49.json
@@ -52024,13 +52042,13 @@ C:.
     ³           readme.md
     ³           
     ÃÄÄÄpublic
+    ³       1920x1080.jpg
     ³       favicon.ico
     ³       index.html
     ³       logo192.png
     ³       logo512.png
     ³       manifest.json
     ³       robots.txt
-    ³       To-Do-Task-Management-App-Template-1-1.jpeg
     ³       _redirects
     ³       
     ÀÄÄÄsrc

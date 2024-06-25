@@ -16,14 +16,14 @@ main {
 
 h1,
 h2 {
-  color: #0c3157 !important; /* Light color for better visibility */
+  color: #007bff !important; /* Light color for better visibility */
   text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
     -1px 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff;
 }
 
 h1.text-center,
 h2.text-center {
-  color: #24336a !important; /* Adding more specificity */
+  color: #007bff !important; /* Adding more specificity */
 }
 
 .card {
