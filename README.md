@@ -136,4 +136,16 @@ Task_manager/
 ├── project_structure.txt
 ├── README.md
 └── api_tests.py
+```
+## Contributing
+Fork the repository.
+Create a new branch (git checkout -b feature-branch).
+Make your changes.
+Commit your changes (git commit -m 'Add new feature').
+Push to the branch (git push origin feature-branch).
+Open a Pull Request.
 
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Feel free to modify the above as needed, especially the specific details in the Features, Usage, and Contributing sections.
