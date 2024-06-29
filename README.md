@@ -150,6 +150,9 @@ Push to the branch (git push origin feature-branch).
 
 Open a Pull Request.
 
+## Successful Docker Build
+![image](https://github.com/bright789/Task_manager/assets/22407572/aee85ee9-4336-4f86-84ed-e83ccf94bbb2)
+
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
