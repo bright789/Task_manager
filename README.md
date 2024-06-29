@@ -16,14 +16,36 @@ A web-based Task Management System built using Flask for the backend and React f
 
 Before you begin, ensure you have met the following requirements:
 
-- Python 3.x
-- Node.js and npm
-- Flask
-- React
+- Docker
+- Docker Compose
 
 ## Installation
 
-### Backend
+### Using Docker
+
+1. Clone the repository:
+
+    ```sh
+    git clone https://github.com/yourusername/task-management-system.git
+    cd task-management-system
+    ```
+
+2. Build and run the containers:
+
+    ```sh
+    docker-compose up --build
+    ```
+
+This command will build the Docker images for both the backend and frontend services, and start the containers.
+
+3. Access the application:
+
+    - Backend API: `http://localhost:5000`
+    - Frontend UI: `http://localhost:3000`
+
+### Traditional Installation (without Docker)
+
+#### Backend
 
 1. Clone the repository:
 
@@ -71,7 +93,7 @@ Before you begin, ensure you have met the following requirements:
     flask run
     ```
 
-### Frontend
+#### Frontend
 
 1. Navigate to the `frontend` directory:
 
@@ -93,7 +115,10 @@ Before you begin, ensure you have met the following requirements:
 
 ## Usage
 
-1. Open your web browser and navigate to `http://localhost:5000`.
+1. Open your web browser and navigate to:
+   - Backend API: `http://localhost:5000`
+   - Frontend UI: `http://localhost:3000`
+
 2. Register a new account or log in with an existing account.
 3. Manage your tasks by creating, viewing, and updating them.
 
@@ -137,6 +162,7 @@ Task_manager/
 ├── README.md
 └── api_tests.py
 ```
+
 ## Contributing
 Fork the repository.
 
@@ -151,9 +177,13 @@ Push to the branch (git push origin feature-branch).
 Open a Pull Request.
 
 ## Successful Docker Build
+
 ![image](https://github.com/bright789/Task_manager/assets/22407572/aee85ee9-4336-4f86-84ed-e83ccf94bbb2)
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Feel free to modify the above as needed, especially the specific details in the Features, Usage, and Contributing sections.
+
+This updated `README.md` includes detailed instructions on how to set up and run the application using Docker, as well as the traditional method without Docker.
+
