@@ -1,5 +1,5 @@
 // src/App.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Register from './components/Register';
@@ -28,6 +28,11 @@ const Home = () => (
 const App = () => {
   const token = useSelector((state) => state.auth.token);
   const isAdmin = useSelector((state) => state.auth.isAdmin);
+
+  useEffect(() => {
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.body.classList.add(`${currentTheme}-mode`);
+  }, []);
 
   return (
     <Router>

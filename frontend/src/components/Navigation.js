@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Logout from './Logout';
+import ThemeToggle from './ThemeToggle';
 
 const Navigation = () => {
   const token = useSelector((state) => state.auth.token);
@@ -43,6 +44,11 @@ const Navigation = () => {
                 </li>
               </>
             )}
+          </ul>
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <ThemeToggle />
+            </li>
           </ul>
         </div>
       </div>
