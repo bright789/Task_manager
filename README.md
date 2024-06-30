@@ -26,8 +26,8 @@ Before you begin, ensure you have met the following requirements:
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/yourusername/task-management-system.git
-    cd task-management-system
+    git clone https://github.com/yourusername/Task_manager.git 
+    cd Task_manager
     ```
 
 2. Build and run the containers:
