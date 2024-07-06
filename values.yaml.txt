@@ -1,0 +1,43 @@
+replicaCount: 1
+
+image:
+  repository: my-repo/my-app
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+vault:
+  address: ""
+  token: ""  # Vault token with permission to read role_id and generate secret_id
+  role: "my-role"
+  secret_path: ""
+
+probes:
+  liveness:
+    path: /healthz
+    initialDelaySeconds: 30
+    periodSeconds: 10
+  readiness:
+    path: /readiness
+    initialDelaySeconds: 30
+    periodSeconds: 10
+  startup:
+    path: /startup
+    initialDelaySeconds: 0
+    periodSeconds: 10
