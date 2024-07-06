@@ -1,0 +1,4 @@
+ClusterIP (default): Exposes the service on a cluster-internal IP. This means that the service is only accessible within the cluster.
+NodePort: Exposes the service on each Node’s IP at a static port (the NodePort). This makes the service accessible from outside the cluster using <NodeIP>:<NodePort>.
+LoadBalancer: Exposes the service externally using a cloud provider’s load balancer.
+ExternalName: Maps the service to the contents of the externalName field (e.g., foo.bar.example.com), by returning a CNAME record with its value.
