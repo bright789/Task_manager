@@ -13,14 +13,19 @@ ingress:
   enabled: false
   annotations: {}
   hosts:
-    - host: chart-example.local
+    - host: 
       paths: []
   tls: []
 
-resources: {}
-nodeSelector: {}
-tolerations: []
-affinity: {}
+
+resources:  # Resource requests and limits
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 512Mi
+
 
 vault:
   address: ""
