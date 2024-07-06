@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "my-project.fullname" . }}
+  labels:
+    {{- include "my-project.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "my-project.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "my-project.selectorLabels" . | nindent 8 }}
+    spec:
+      initContainers:
+        - name: vault-init
+          image: curlimages/curl:latest
+          env:
+            - name: VAULT_ADDR
+              value: {{ .Values.vault.address }}
+            - name: VAULT_TOKEN
+              value: {{ .Values.vault.token }}
+            - name: VAULT_ROLE
+              value: {{ .Values.vault.role }}
+          command:
+            - sh
+            - -c
+            - |
+              role_id=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" $VAULT_ADDR/v1/auth/approle/role/$VAULT_ROLE/role-id | jq -r .data.role_id)
+              secret_id=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" --request POST $VAULT_ADDR/v1/auth/approle/role/$VAULT_ROLE/secret-id | jq -r .data.secret_id)
+              kubectl create secret generic {{ include "my-project.fullname" . }}-vault --from-literal=role_id=$role_id --from-literal=secret_id=$secret_id --dry-run=client -o yaml | kubectl apply -f -
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: VAULT_ADDR
+              value: {{ .Values.vault.address }}
+            - name: ROLE_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "my-project.fullname" . }}-vault
+                  key: role_id
+            - name: SECRET_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "my-project.fullname" . }}-vault
+                  key: secret_id
+            - name: SECRET_PATH
+              value: {{ .Values.vault.secret_path }}
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.probes.liveness.path }}
+              port: 80
+            initialDelaySeconds: {{ .Values.probes.liveness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probes.liveness.periodSeconds }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.probes.readiness.path }}
+              port: 80
+            initialDelaySeconds: {{ .Values.probes.readiness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probes.readiness.periodSeconds }}
+          startupProbe:
+            httpGet:
+              path: {{ .Values.probes.startup.path }}
+              port: 80
+            initialDelaySeconds: {{ .Values.probes.startup.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probes.startup.periodSeconds }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
